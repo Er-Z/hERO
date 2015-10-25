@@ -52,11 +52,11 @@ int main(int argc,char* argv[])
     printf("hfile_count:%d\n",prj_p->hfile_count);
     for(i = 0;i < prj_p->cfile_count;i++)
     {
-	printf("cfile%d:%s\n",i,prj_p->cfile[i]);
+	printf("cfile%d:%s\n",i,prj_p->cfiles[i].name);
     }
      for(i = 0;i < prj_p->hfile_count;i++)
     {
-	printf("hfile%d:%s\n",i,prj_p->hfile[i]);
+	printf("hfile%d:%s\n",i,prj_p->hfiles[i].name);
     }
     if(file_init(prj_p) == 0)
     {

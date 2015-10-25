@@ -5,8 +5,6 @@
 #include "main.h"
 #include <errno.h>
 
-
-
 extern char default_path[];
 extern char pathfile[];
 extern char str_include[1024];
@@ -26,7 +24,7 @@ void init_prjt(int argc,char** arg_v,struct prjt* prj_p)
     {        
     	printf("argv2: %s\n",arg_v[2]);  
         strcpy(prj_p->path,arg_v[2]);
-        if(prj_p->path[sizeof(prj_p->path) - 1] != '/')
+        if(prj_p->path[strlen(prj_p->path) - 1] != '/')
   	{
 	    strcat(prj_p->path,"/");
 	}
@@ -89,21 +87,21 @@ int write_include_to_file(struct prjt* prj_p)
 }
 void add_cfile(char* str,struct prjt* prj_p)
 {
-    strcpy(prj_p->cfile[prj_p->cfile_count],str);
-    strcat(prj_p->cfile[prj_p->cfile_count],".c");
+    strcpy(prj_p->cfiles[prj_p->cfile_count].name,str);
+    strcat(prj_p->cfiles[prj_p->cfile_count].name,".c");
     prj_p->cfile_count++;
 }
 void add_hfile(char* str,struct prjt* prj_p)
 {
-    strcpy(prj_p->hfile[prj_p->hfile_count],str);
-    strcat(prj_p->hfile[prj_p->hfile_count],".h");
+    strcpy(prj_p->hfiles[prj_p->hfile_count].name,str);
+    strcat(prj_p->hfiles[prj_p->hfile_count].name,".h");
     prj_p->hfile_count++;
 }
 
 int file_init(struct prjt* prj_p)
 {
     FILE* fp;
-    fp = fopen(strcat(prj_p->path,prj_p->cfile[0]),"w+");
+    fp = fopen(strcat(prj_p->path,prj_p->cfiles[0].name),"w+");
     if(fp == NULL)
     {
 	return errno;

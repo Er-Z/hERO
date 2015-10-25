@@ -12,4 +12,5 @@ void add_hfile(char*,struct prjt*);
 int file_init(struct prjt* prj_p);
 int gen_dir_files(struct prjt*);
 
+
 #endif
