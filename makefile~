@@ -1,0 +1,8 @@
+agprj:acg.o gfile.o
+	@echo generating agprj
+	@gcc -o agprj acg.c gfile.c
+	@echo agprj done
+acg.o:acg.c main.h gfile.h
+	gcc -c acg.c
+gfile.o:gfile.c main.h gfile.h
+	gcc -c gfile.c
